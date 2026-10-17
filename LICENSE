@@ -1,0 +1,26 @@
+RadNotes
+Copyright (c) 2026 Timothy Schoonover. All rights reserved.
+
+This software and its source code are the property of the copyright holder.
+
+You may download, install and use RadNotes, unmodified, on your own devices
+for personal or internal use, and you may read its source code.
+
+Without prior written permission from the copyright holder, you may not:
+  - copy, publish, distribute, sell, sublicense or rent the software or any
+    part of its source code;
+  - distribute modified versions or works based on it;
+  - remove or alter this notice.
+
+Forking on GitHub is allowed only as permitted by GitHub's Terms of Service,
+and creates no further rights.
+
+Third-party components keep their own licenses: Pico CSS (radnotes/static/
+pico.min.css) is MIT-licensed, Copyright 2019-2025 Pico. Radicle, which
+RadNotes uses but does not include, is distributed under its own licenses.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR ITS USE.

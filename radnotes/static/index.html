@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="radnotes-token" content="{{TOKEN}}">
+<title>RadNotes</title>
+<link rel="stylesheet" href="/static/pico.min.css?v={{V}}">
+<link rel="stylesheet" href="/static/app.css?v={{V}}">
+</head>
+<body>
+<header class="container-fluid">
+  <nav>
+    <ul><li><strong>RadNotes</strong></li></ul>
+    <ul>
+      <li><a href="#" id="sync" class="secondary" title="Sync now"></a></li>
+      <li><a href="#" id="share" class="secondary">Share</a></li>
+      <li><button id="new">New note</button></li>
+    </ul>
+  </nav>
+</header>
+<main class="container-fluid">
+  <aside>
+    <select id="space" aria-label="Notes or shared space" hidden></select>
+    <input type="search" id="search" placeholder="Search" aria-label="Search notes">
+    <ul id="list"></ul>
+  </aside>
+  <section id="page">
+    <div id="tools">
+      <small id="saved"></small>
+      <span>
+        <a href="#" id="toggle" class="secondary">Preview</a>
+        <a href="#" id="delete" class="secondary">Delete</a>
+      </span>
+    </div>
+    <textarea id="editor" placeholder="Start writing. The first line is the title." aria-label="Note"></textarea>
+    <div id="preview" hidden></div>
+  </section>
+</main>
+<dialog id="share-dlg">
+  <article>
+    <header><button class="close" rel="prev" aria-label="Close" data-close></button><strong>Share</strong></header>
+
+    <h6>Add one of your devices</h6>
+    <p><small>Show a code here, then enter it on your other device.</small></p>
+    <div id="pair-box"><button class="outline" id="pair-start">Show a code</button></div>
+
+    <h6>Share with friends</h6>
+    <p><small>A shared space is separate from your own notes. Anyone with its code can read and write it.</small></p>
+    <ul id="spaces"></ul>
+    <form id="space-form" role="group">
+      <input name="name" placeholder="Name, like Book club" aria-label="Shared space name" required>
+      <button class="outline">Create</button>
+    </form>
+
+    <h6>Have a code?</h6>
+    <form id="join-form" role="group">
+      <input name="code" placeholder="veggiepi-482913 or rn-z…" aria-label="Code" required autocomplete="off" spellcheck="false">
+      <button class="outline">Join</button>
+    </form>
+    <p id="share-msg"><small></small></p>
+  </article>
+</dialog>
+<script src="/static/app.js?v={{V}}"></script>
+</body>
+</html>

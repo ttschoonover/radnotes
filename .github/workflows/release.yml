@@ -1,0 +1,35 @@
+name: Release
+
+# Publish a release by pushing a version tag:  git tag v0.4.0 && git push --tags
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check the tag matches the version
+        run: |
+          v="$(python -c 'import radnotes; print(radnotes.__version__)')"
+          [ "v$v" = "$GITHUB_REF_NAME" ] || { echo "Tag $GITHUB_REF_NAME doesn't match version $v in radnotes/__init__.py"; exit 1; }
+      - name: Test
+        run: |
+          git config --global user.name "CI"; git config --global user.email "ci@example.invalid"
+          pip install -e ".[test]" && pytest -q
+      - name: Build
+        run: |
+          pip install build
+          python -m build --outdir dist
+          cp dist/radnotes-*.tar.gz dist/radnotes.tar.gz   # fixed name the installer downloads
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" dist/* --title "RadNotes $GITHUB_REF_NAME" --generate-notes

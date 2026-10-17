@@ -1,0 +1,49 @@
+:root { --rn-ink: var(--pico-color); }  /* Pico recolors text inside links */
+body > header nav { padding: 0; }
+body > header button { margin: 0; padding: .4rem 1rem; }
+#sync { font-size: .85rem; }
+#sync.error { color: var(--pico-del-color); }
+
+main { display: grid; grid-template-columns: 17rem minmax(0, 1fr); gap: 2.5rem; height: calc(100vh - 4.5rem); }
+aside { display: flex; flex-direction: column; min-height: 0; min-width: 0; }
+#list { flex: 1; overflow: auto; padding: 0; margin: 0; }
+#list li { list-style: none; margin: 0; }
+#list a {
+  display: block; padding: .55rem .7rem; text-decoration: none; color: var(--rn-ink);
+  border-radius: var(--pico-border-radius);
+}
+#list a:hover { background: var(--pico-card-sectioning-background-color); }
+#list a.active { background: var(--pico-card-sectioning-background-color); box-shadow: inset 3px 0 var(--pico-primary); }
+#list b { color: var(--rn-ink); display: block; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#list small { display: block; color: var(--pico-muted-color); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+#space { margin-bottom: .75rem; font-weight: 600; }
+
+#share-dlg article { max-width: 34rem; }
+#share-dlg h6 { margin: 1.5rem 0 .25rem; }
+#share-dlg h6:first-of-type { margin-top: 0; }
+#share-dlg p { margin-bottom: .6rem; color: var(--pico-muted-color); }
+#spaces { padding: 0; margin: 0 0 .5rem; }
+#spaces li { list-style: none; display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; padding: .35rem 0; }
+#spaces code { font-size: .75rem; overflow-wrap: anywhere; }
+.pair-code { font: 600 1.6rem/1.2 var(--pico-font-family-monospace); letter-spacing: .04em; margin: .25rem 0; }
+#share-msg.error small { color: var(--pico-del-color); }
+
+#page { display: flex; flex-direction: column; min-height: 0; max-width: 46rem; }
+#tools { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: .5rem; }
+#tools small { color: var(--pico-muted-color); }
+#tools a { margin-left: 1.2rem; font-size: .9rem; }
+#editor, #preview { flex: 1; min-height: 0; margin: 0; }
+#editor {
+  border: 0; box-shadow: none; resize: none; padding: 0; background: transparent;
+  font-size: 1.1rem; line-height: 1.75;
+}
+#editor:focus { box-shadow: none; }
+#preview { overflow: auto; font-size: 1.05rem; line-height: 1.7; }
+
+@media (max-width: 768px) {
+  main { grid-template-columns: minmax(0, 1fr); height: auto; gap: 1rem; }
+  #sync { display: none; }
+  #list { max-height: 28vh; }
+  #editor, #preview { min-height: 65vh; }
+}

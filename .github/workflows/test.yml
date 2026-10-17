@@ -1,0 +1,29 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python: ["3.10", "3.13"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: |
+          git config --global user.name "CI"
+          git config --global user.email "ci@example.invalid"
+      - run: pip install -e ".[test]"
+      - run: pytest -q
+      - name: Installer works from a local build
+        run: |
+          pip install build && python -m build --sdist --outdir dist
+          RADNOTES_SOURCE="$(ls dist/*.tar.gz)" RADNOTES_SKIP_RADICLE=1 RADNOTES_DIR="$RUNNER_TEMP/rn" sh install.sh
+          "$RUNNER_TEMP/rn/venv/bin/radnotes" --version
